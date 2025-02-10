@@ -25,7 +25,7 @@ keypoints = cv2.findContours(edged.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPL
 contours = imutils.grab_contours(keypoints) #Grab contours 
 contours = sorted(contours, key=cv2.contourArea, reverse=True)[:10] #Sort contours
 
-location = None
+location = None #We are looking for a license plate so we are trying to find it's approximate location by looking for 4 sides
 for contour in contours:
     approx = cv2.approxPolyDP(contour, 10, True)
     if len(approx) == 4:
